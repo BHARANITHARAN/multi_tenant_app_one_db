@@ -1,14 +1,90 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Articles</h1>
-
-<div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article List</title>
+  <style>
+      body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          margin: 0;
+          padding: 20px;
+          background-color: #f4f4f4;
+          color: #333;
+      }
+      .container {
+          max-width: 900px;
+          margin: auto;
+          padding: 20px;
+          background: #fff;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+          text-align: center;
+          color: #333;
+          font-size: 28px;
+          margin-bottom: 20px;
+      }
+      .article-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+      }
+      .article-item {
+          border-bottom: 1px solid #ddd;
+          padding: 10px 0;
+          margin-bottom: 10px;
+          transition: background-color 0.3s ease;
+      }
+      .article-item:hover {
+          background-color: #f9f9f9;
+      }
+      .article-item:last-child {
+          border-bottom: none; /* Remove border from the last item */
+      }
+      .article-item a {
+          color: #3498db;
+          text-decoration: none;
+          font-size: 18px;
+          font-weight: 600;
+      }
+      .article-item a:hover {
+          text-decoration: underline;
+      }
+      .actions {
+          text-align: center;
+          margin-top: 20px;
+      }
+      .actions a {
+          display: inline-block;
+          padding: 10px 20px;
+          font-size: 16px;
+          color: #fff;
+          background-color: #007bff;
+          text-decoration: none;
+          border-radius: 4px;
+          transition: background-color 0.3s ease;
+      }
+      .actions a:hover {
+          background-color: #0056b3;
+      }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Article List</h1>
+  <ul class="article-list">
+    <% @articles.each do |article| %>
+      <li class="article-item">
+        <%= link_to article.title, article_path(article) %>
+      </li>
+    <% end %>
+  </ul>
+  <div class="actions">
+    <%= link_to 'Create New Articles', new_article_path, class: 'link-button' %>
+  </div>
 </div>
+</body>
+</html>
 
-<%= link_to "New article", new_article_path %>

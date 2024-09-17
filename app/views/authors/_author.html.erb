@@ -1,17 +1,122 @@
-<div id="<%= dom_id author %>">
-  <p>
-    <strong>Slug:</strong>
-    <%= author.slug %>
-  </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tenant Information</title>
+  <style>
+      body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f7f7f7;
+          color: #333;
+      }
 
-  <p>
-    <strong>Name:</strong>
-    <%= author.name %>
-  </p>
+      .container {
+          max-width: 800px;
+          margin: 20px auto;
+          padding: 20px;
+          background: #fff;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          overflow: hidden; /* Ensures children elements stay within the rounded corners */
+      }
 
-  <p>
-    <strong>Description:</strong>
-    <%= author.description %>
-  </p>
+      h1 {
+          text-align: center;
+          color: #2c3e50;
+          font-size: 24px;
+          margin-bottom: 20px;
+      }
 
+      .info {
+          margin-bottom: 20px;
+          padding: 10px;
+          border-bottom: 1px solid #eee;
+      }
+
+      .info:last-child {
+          border-bottom: none; /* Remove border from the last item */
+      }
+
+      .info label {
+          display: block;
+          font-weight: 600;
+          color: #555;
+          margin-bottom: 5px;
+      }
+
+      .info p {
+          margin: 0;
+          font-size: 16px;
+          color: #444;
+      }
+
+      .actions {
+          text-align: center;
+          margin-top: 30px;
+      }
+
+      .actions a {
+          display: inline-block;
+          padding: 12px 24px;
+          font-size: 18px;
+          color: #fff;
+          background-color: #3498db;
+          text-decoration: none;
+          border-radius: 6px;
+          transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .actions a:hover {
+          background-color: #2980b9;
+          transform: translateY(-2px); /* Slight lift effect */
+      }
+
+      .actions a:focus {
+          outline: 2px solid #2980b9; /* Focus ring for accessibility */
+          outline-offset: 2px;
+      }
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Tenant Information</h1>
+  <div class="info">
+    <label for="name">Name:</label>
+    <p><%= author.name %></p>
+  </div>
+  <div class="info">
+    <label for="email">Email:</label>
+    <p><%= author.email %></p>
+  </div>
+  <div class="info">
+    <label for="mobile">Mobile:</label>
+    <p><%= author.mobile %></p>
+  </div>
+  <div class="info">
+    <label for="domain">Domain:</label>
+    <p><%= author.domain %></p>
+  </div>
+  <div class="info">
+    <label for="description">Description:</label>
+    <p><%= author.description %></p>
+  </div>
+  <div class="info">
+    <label for="created_at">Created At:</label>
+    <p><%= author.created_at.strftime("%B %d, %Y %I:%M %p") %></p>
+  </div>
+  <div class="info">
+    <label for="updated_at">Updated At:</label>
+    <p><%= author.updated_at.strftime("%B %d, %Y %I:%M %p") %></p>
+  </div>
+  <div class="actions">
+    <%= link_to "Visit your blog", "http://#{@author.domain}.localhost:3000/articles" %>
+  </div>
 </div>
+</body>
+</html>
+
+

@@ -1,9 +1,106 @@
-<h1>New article</h1>
 
-<%= render "form", article: @article %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create New Article</title>
+  <style>
+      body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          margin: 0;
+          padding: 20px;
+          background-color: #f4f4f4;
+          color: #333;
+      }
+      .container {
+          max-width: 700px;
+          margin: auto;
+          padding: 20px;
+          background: #fff;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+          text-align: center;
+          color: #333;
+          font-size: 28px;
+          margin-bottom: 20px;
+      }
+      form {
+          display: flex;
+          flex-direction: column;
+      }
+      .form-group {
+          margin-bottom: 15px;
+      }
+      .form-group label {
+          font-weight: bold;
+          display: block;
+          margin-bottom: 5px;
+      }
+      .form-group input, .form-group textarea {
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          box-sizing: border-box;
+      }
+      .form-group textarea {
+          resize: vertical;
+          min-height: 150px;
+      }
+      .form-group input:focus, .form-group textarea:focus {
+          border-color: #007bff;
+          outline: none;
+          box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
+      }
+      .form-group button {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          font-size: 16px;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+      .form-group button:hover {
+          background-color: #0056b3;
+      }
+      .actions {
+          text-align: center;
+          margin-top: 20px;
+      }
+      .actions a {
+          display: inline-block;
+          padding: 10px 20px;
+          font-size: 16px;
+          color: #fff;
+          background-color: #6c757d;
+          text-decoration: none;
+          border-radius: 4px;
+          transition: background-color 0.3s ease;
+      }
+      .actions a:hover {
+          background-color: #5a6268;
+      }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Create New Article</h1>
 
-<br>
+  <%= render "form", article: @article %>
 
-<div>
-  <%= link_to "Back to articles", articles_path %>
+  <div class="actions">
+    <%= link_to 'Back to List', articles_path, class: 'link-button' %>
+  </div>
 </div>
+</body>
+</html>
+
+<%#= render "form", article: @article %>
+
+<!--<br>-->

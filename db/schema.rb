@@ -20,8 +20,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_17_091932) do
   end
 
   create_table "authors", force: :cascade do |t|
-    t.string "slug"
     t.string "name"
+    t.string "email"
+    t.string "mobile"
+    t.string "domain"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

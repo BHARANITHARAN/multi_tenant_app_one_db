@@ -38,7 +38,7 @@ class AuthorsController < ApplicationController
   def update
     respond_to do |format|
       if @author.update(author_params)
-        format.html { redirect_to @author, notice: "Author was successfully updated." }
+        format.html { redirect_to @author, notice: "Tenant Registered Successfully." }
         format.json { render :show, status: :ok, location: @author }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,6 +65,6 @@ class AuthorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def author_params
-      params.require(:author).permit(:slug, :name, :description)
+      params.require(:author).permit(:name, :email, :mobile, :domain, :description)
     end
 end
