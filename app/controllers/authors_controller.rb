@@ -1,4 +1,5 @@
 class AuthorsController < ApplicationController
+  before_action :require_login, only: [:index, :edit, :update, :destroy]
   before_action :set_author, only: %i[ show edit update destroy ]
 
   # GET /authors or /authors.json
@@ -65,6 +66,6 @@ class AuthorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def author_params
-      params.require(:author).permit(:name, :email, :mobile, :domain, :description)
+      params.require(:author).permit(:name, :email, :mobile, :domain, :description, :password, :password_confirmation)
     end
 end

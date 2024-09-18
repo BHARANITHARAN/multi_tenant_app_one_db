@@ -1,7 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MultiTenantOneDb</title>
+    <style>
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            width: 100%;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Logout Button Styles */
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .logout-link {
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #dc3545;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-link:hover {
+            background-color: #c82333;
+        }
+
+    </style>
+    <title>Blogger Multi Tenant</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +45,14 @@
   </head>
 
   <body>
+  <div class="header">
+    <div class="logout-button">
+      <% if logged_in? %>
+        <%= link_to 'Logout', logout_path, class: 'logout-link' %>
+      <% end %>
+    </div>
+  </div>
+
     <%= yield %>
   </body>
 </html>

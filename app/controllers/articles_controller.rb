@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_author
+  before_action :require_login, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
 
@@ -10,6 +11,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    @article = Article.find(params[:id])
   end
 
   # GET /articles/new

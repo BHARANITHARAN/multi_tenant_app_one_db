@@ -1,0 +1,129 @@
+<head>
+  <style>
+      /* Global Styles */
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          margin: 0;
+          padding: 0;
+      }
+
+      /* Container for the Form */
+      .login-container {
+          max-width: 400px;
+          margin: 50px auto;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Heading */
+      h1 {
+          text-align: center;
+          color: #333;
+          margin-bottom: 20px;
+          font-size: 24px;
+      }
+
+      /* Form Fields */
+      .field {
+          margin-bottom: 15px;
+      }
+
+      .form-label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: 5px;
+          color: #555;
+      }
+
+      .form-input {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 16px;
+      }
+
+      /* Form Actions */
+      .actions {
+          text-align: center;
+          margin-top: 20px;
+      }
+
+      .form-submit {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          font-size: 16px;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      .form-submit:hover {
+          background-color: #0056b3;
+      }
+
+      /* Back Link */
+      .link-button {
+          display: block;
+          text-align: center;
+          margin-top: 20px;
+          font-size: 16px;
+          color: #007bff;
+          text-decoration: none;
+          transition: color 0.3s ease;
+      }
+
+      .link-button:hover {
+          color: #0056b3;
+      }
+
+
+  </style>
+
+</head>
+<h1>Log In</h1>
+
+<%#= form_with(url: login_path, local: true) do |form| %>
+<!--  <div class="field">-->
+    <%#= form.label :email %>
+    <%#= form.email_field :email %>
+<!--  </div>-->
+
+<!--  <div class="field">-->
+    <%#= form.label :password %>
+    <%#= form.password_field :password %>
+<!--  </div>-->
+
+<!--  <div class="actions">-->
+    <%#= form.submit 'Log In' %>
+<!--  </div>-->
+<%# end %>
+
+<%#= link_to 'Back', root_path %>
+
+<div class="login-container">
+  <%= form_with(url: login_path, local: true, class: 'login-form') do |form| %>
+    <div class="field">
+      <%= form.label :email, class: 'form-label' %>
+      <%= form.email_field :email, class: 'form-input' %>
+    </div>
+
+    <div class="field">
+      <%= form.label :password, class: 'form-label' %>
+      <%= form.password_field :password, class: 'form-input' %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Log In', class: 'form-submit' %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Sign up', "http://#{request.domain}:#{request.port}/authors/new", class: 'link-button' %>
+</div>
+
+

@@ -11,48 +11,21 @@ class SubdomainBlank
 end
 
 Rails.application.routes.draw do
-  # get 'errors/not_found'
-  # constraints subdomain: /.*/ do
-  #   get '/', to: 'articles#index', as: 'subdomain_root'
-  #   resources :articles
-  # end
-  #
-  # root 'authors#new'
+  root 'pages#home'
 
-  # match '*unmatched', to: redirect('/'), via: :all
+  get 'login', to: 'sessions#new', as: 'login'
+  post 'login', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
   constraints(SubdomainConstraint) do
-    root 'articles#index', as: :subdomain_root
     resources :articles
-
-    match '*unmatched', to: 'errors#not_found', via: :all, as: 'subdomain_not_found'
   end
-  constraints(SubdomainBlank) do
-    root 'authors#index'
-    resources :authors
 
-    match '*unmatched', to: 'errors#not_found', via: :all, as: 'domain_not_found'
+  # Routes for when there is no subdomain (root domain)
+  constraints(SubdomainBlank) do
+    resources :authors
+    # Handle unmatched routes (optional)
+    # match '*unmatched', to: 'errors#not_found', via: :all, as: 'domain_not_found'
   end
 
 end
-
-
-
-
-
-
-# Rails.application.routes.draw do
-#   get 'errors/not_found'
-#   # resources :projects, only: [:index]
-#   constraints(SubdomainConstraint) do
-#     root 'dashboard#index', as: :subdomain_root
-#     devise_for :users
-#     resources :users, only: :index
-#     resources :projects
-#   end
-#
-#   constraints(SubdomainBlank) do
-#     root 'welcome#index'
-#     resources :accounts, only: [:new, :create]
-#   end
-# end
-

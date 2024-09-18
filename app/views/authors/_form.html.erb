@@ -88,6 +88,12 @@
       <div style="color: red">
         <h2><%= pluralize(author.errors.count, "error") %> prohibited this author from being saved:</h2>
       </div>
+
+      <ul>
+        <% author.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
     <% end %>
 
     <div class="form-group">
@@ -99,8 +105,8 @@
       <%= form.email_field :email, required: true %>
     </div>
     <div class="form-group">
-      <%= form.label :phone, "Phone Number" %>
-      <%= form.telephone_field :phone %>
+      <%= form.label :phone, "Mobile Number" %>
+      <%= form.telephone_field :mobile %>
     </div>
     <div class="form-group">
       <%= form.label :domain, "Domain" %>
@@ -110,6 +116,17 @@
       <%= form.label :description, "Description" %>
       <%= form.text_area :description, rows: 4 %>
     </div>
+
+    <div class="form-group">
+      <%= form.label :password %>
+      <%= form.password_field :password %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation %>
+    </div>
+
     <div class="form-group" >
       <button type="submit">Register</button>
       <%= link_to 'User Home', authors_path, class: 'button' %>
